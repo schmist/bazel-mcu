@@ -41,4 +41,5 @@ toolchain {
   tool_path { name: "strip" path: "/usr/bin/avr-strip" }
   compiler_flag: "-mmcu=atmega328p"
   compiler_flag: "-Os"
+  compiler_flag: "-DF_CPU=16000000"
 }
