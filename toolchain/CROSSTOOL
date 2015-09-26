@@ -18,13 +18,11 @@ toolchain {
   target_cpu: "avr"
   target_system_name: "local"
   toolchain_identifier: "avr-gcc"
-
   tool_path { name: "ar" path: "/usr/bin/avr-ar" }
   tool_path { name: "compat-ld" path: "/usr/bin/avr-ld" }
   tool_path { name: "cpp" path: "/usr/bin/avr-cpp" }
   tool_path { name: "dwp" path: "/usr/bin/avr-dwp" }
   tool_path { name: "gcc" path: "/usr/bin/avr-gcc" }
-  cxx_flag: "-std=c++0x"
   # TODO(bazel-team): In theory, the path here ought to exactly match the path
   # used by gcc. That works because bazel currently doesn't track files at
   # absolute locations and has no remote execution, yet. However, this will need
@@ -39,7 +37,11 @@ toolchain {
   objcopy_embed_flag: "binary"
   tool_path { name: "objdump" path: "/usr/bin/avr-objdump" }
   tool_path { name: "strip" path: "/usr/bin/avr-strip" }
-  compiler_flag: "-mmcu=atmega328p"
-  compiler_flag: "-Os"
-  compiler_flag: "-DF_CPU=16000000"
+  compiler_flag: "-funsigned-char"
+  compiler_flag: "-funsigned-bitfields"
+  compiler_flag: "-fpack-struct"
+  compiler_flag: "-fshort-enums"
+  compiler_flag: "-Wall"
+  compiler_flag: "-Wstrict-prototypes"
+  compiler_flag: "-Wundef"
 }
