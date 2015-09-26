@@ -8,4 +8,4 @@ to convert the app elf file to a hex file
 
 `bazel build //app:hex --cpu=avr`
 
-You need to have avr-gcc installed. Change toolchain/CROSSTOOL to fit your installation path.
+You need to have avr-gcc installed. Change toolchain/CROSSTOOL to fit your installation path. CPU type and CLOCK speed can be specified in the build target in app/BUILD.
