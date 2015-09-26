@@ -1,0 +1,44 @@
+major_version: "local"
+minor_version: ""
+default_target_cpu: "avr"
+
+default_toolchain {
+  cpu: "avr"
+  toolchain_identifier: "avr-gcc"
+}
+
+toolchain {
+  abi_version: "local"
+  abi_libc_version: "local"
+  builtin_sysroot: ""
+  compiler: "avr-gcc"
+  host_system_name: "local"
+  needsPic: false
+  target_libc: "local"
+  target_cpu: "avr"
+  target_system_name: "local"
+  toolchain_identifier: "avr-gcc"
+
+  tool_path { name: "ar" path: "/usr/bin/avr-ar" }
+  tool_path { name: "compat-ld" path: "/usr/bin/avr-ld" }
+  tool_path { name: "cpp" path: "/usr/bin/avr-cpp" }
+  tool_path { name: "dwp" path: "/usr/bin/avr-dwp" }
+  tool_path { name: "gcc" path: "/usr/bin/avr-gcc" }
+  cxx_flag: "-std=c++0x"
+  # TODO(bazel-team): In theory, the path here ought to exactly match the path
+  # used by gcc. That works because bazel currently doesn't track files at
+  # absolute locations and has no remote execution, yet. However, this will need
+  # to be fixed, maybe with auto-detection?
+  cxx_builtin_include_directory: "/usr/lib/gcc"
+  cxx_builtin_include_directory: "/usr/include"
+  tool_path { name: "gcov" path: "avr-gcov" }
+  tool_path { name: "ld" path: "/usr/bin/avr-ld" }
+  tool_path { name: "nm" path: "/usr/bin/avr-nm" }
+  tool_path { name: "objcopy" path: "/usr/bin/avr-objcopy" }
+  objcopy_embed_flag: "-I"
+  objcopy_embed_flag: "binary"
+  tool_path { name: "objdump" path: "/usr/bin/avr-objdump" }
+  tool_path { name: "strip" path: "/usr/bin/avr-strip" }
+  compiler_flag: "-mmcu=atmega328p"
+  compiler_flag: "-Os"
+}
