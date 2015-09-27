@@ -2,19 +2,20 @@ load("/tools/hex", "hex")
 
 cc_binary (
     name = "app",
-    copts = ["-mmcu=atmega328p", "-Os", "-DF_CPU=16000000"],
+    copts = ["-mmcu=$(MCU)"],
     srcs = ["main.c"],
 )
 
 hex (
 	name = "hex",
 	src = ":app",
+	show_size = 1,
 )
 
 genrule (
 	name = "flash",
 	srcs = [":hex"],
 	outs = [ "avrdude.log" ],
-	cmd = "avrdude -p atmega328p -P /dev/ttyUSB0 -c arduino -U flash:w:$(location :hex) -l $@",
+	cmd = "avrdude -p $(MCU) -P $(COM) -c $(PROGR) -U flash:w:$(location :hex) -l $@",
 	local = 1,
 )
