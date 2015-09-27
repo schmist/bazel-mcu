@@ -6,9 +6,16 @@ cc_binary (
     srcs = ["main.c"],
 )
 
+cc_binary (
+    name = "app_cpp",
+    copts = ["-mmcu=$(MCU)"],
+    srcs = ["main.cc","pin.cc"],
+)
+
 hex (
 	name = "hex",
 	src = ":app",
+	avr_cpu = "atmega328p",
 	show_size = 1,
 )
 

@@ -3,8 +3,9 @@ def _impl(ctx):
     input = ctx.file.src
     objcopy = ctx.fragments.cpp.objcopy_executable
     size_cmd = ""
+    avr_cpu = ctx.attr.avr_cpu
     if ctx.attr.show_size:
-        size_cmd = "avr-size -C --mcu=$(MCU) %s" % input.path
+        size_cmd = "avr-size -C --mcu=%s %s" % (avr_cpu, input.path)
 
     ctx.action(
         inputs=[input],
@@ -18,6 +19,7 @@ hex = rule(
     attrs={
         "src": attr.label(mandatory=True, allow_files=True, single_file=True),
         "show_size": attr.bool(mandatory=False, default=False),
+        "avr_cpu": attr.string(mandatory=True),
     },
     outputs={"out": "%{src}.hex"},
 )
