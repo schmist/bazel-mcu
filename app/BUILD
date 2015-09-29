@@ -3,13 +3,8 @@ load("/tools/hex", "hex")
 cc_binary (
     name = "app",
     copts = ["-mmcu=$(MCU)"],
+    linkopts = ["-mmcu=$(MCU)"],
     srcs = ["main.c"],
-)
-
-cc_binary (
-    name = "app_cpp",
-    copts = ["-mmcu=$(MCU)"],
-    srcs = ["main.cc","pin.cc"],
 )
 
 hex (
