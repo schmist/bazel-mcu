@@ -33,15 +33,6 @@ toolchain {
   tool_path { name: "ld" path: "/usr/bin/avr-ld" }
   tool_path { name: "nm" path: "/usr/bin/avr-nm" }
   tool_path { name: "objcopy" path: "/usr/bin/avr-objcopy" }
-  objcopy_embed_flag: "-I"
-  objcopy_embed_flag: "binary"
   tool_path { name: "objdump" path: "/usr/bin/avr-objdump" }
   tool_path { name: "strip" path: "/usr/bin/avr-strip" }
-  compiler_flag: "-funsigned-char"
-  compiler_flag: "-funsigned-bitfields"
-  compiler_flag: "-fpack-struct"
-  compiler_flag: "-fshort-enums"
-  compiler_flag: "-Wall"
-  compiler_flag: "-Wstrict-prototypes"
-  compiler_flag: "-Wundef"
 }
