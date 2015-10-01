@@ -1,4 +1,4 @@
-build --crosstool_top=//toolchain --host_crosstool_top=//tools/cpp:toolchain
+build --crosstool_top=//toolchain --host_crosstool_top=//tools/cpp:toolchain --use_isystem_for_includes=0
 
 build:328p --cpu=avr
 build:328p --define MCU=atmega328p
@@ -6,3 +6,4 @@ build:328p --define COM=/dev/ttyUSB0
 build:328p --define PROGR=arduino
 build:328p --copt -Os
 build:328p --copt -DF_CPU=16000000
+build:328p --cxxopt -std=c++11
